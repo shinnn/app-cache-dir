@@ -5,7 +5,7 @@
   "repository": "shinnn/app-cache-dir",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
   "scripts": {
-    "pretest": "eslint --format=codeframe index.js test.js",
+    "pretest": "eslint --fix --format=codeframe index.js test.js",
     "test": "istanbul cover test.js"
   },
   "license": "CC0-1.0",
@@ -24,10 +24,6 @@
     "deletable",
     "cross-platform"
   ],
-  "dependencies": {
-    "lodash": "^4.17.4",
-    "os-homedir": "^1.0.2"
-  },
   "devDependencies": {
     "@shinnn/eslint-config-node": "^4.0.0",
     "eslint": "^4.1.1",
@@ -36,9 +32,6 @@
     "tape": "^4.6.3"
   },
   "eslintConfig": {
-    "extends": "@shinnn/node",
-    "rules": {
-      "no-var": "off"
-    }
+    "extends": "@shinnn/node"
   }
 }

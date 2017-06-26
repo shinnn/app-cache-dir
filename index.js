@@ -1,26 +1,24 @@
 'use strict';
 
-var join = require('path').join;
-var os = require('os');
+const join = require('path').join;
+const os = require('os');
 
-var tmpdir = os.tmpdir;
+const homedir = os.homedir;
+const tmpdir = os.tmpdir;
 
-var lodashFind = require('lodash/find');
-var homedir = require('os-homedir');
-
-var ARG_ERROR = 'Expected an application name to find its cache directory';
+const ARG_ERROR = 'Expected an application name to find its cache directory';
 
 function isLocalAppDataKey(key) {
-  return key.toLowerCase() === 'localappdata';
+  return key.toUpperCase() === 'LOCALAPPDATA';
 }
 
 function validateArgument(appName) {
   if (typeof appName !== 'string') {
-    throw new TypeError(ARG_ERROR + ' (string), but got ' + appName + '.');
+    throw new TypeError(`${ARG_ERROR} (string), but got ${appName}.`);
   }
 
   if (appName.length === 0) {
-    throw new Error(ARG_ERROR + ', but got \'\' (empty string).');
+    throw new Error(`${ARG_ERROR}, but got '' (empty string).`);
   }
 }
 
@@ -35,7 +33,7 @@ function posixAppCacheDir(appName) {
     return join(process.env.XDG_CACHE_HOME, appName);
   }
 
-  var home = homedir();
+  const home = homedir();
 
   if (home && home.indexOf('\0') === -1) {
     return join(home, '.cache', appName);
@@ -47,7 +45,7 @@ function posixAppCacheDir(appName) {
 function win32AppCacheDir(appName) {
   validateArgument(appName);
 
-  var key = lodashFind(Object.keys(process.env), isLocalAppDataKey);
+  const key = Object.keys(process.env).find(isLocalAppDataKey);
 
   if (key) {
     return join(process.env[key], appName, 'cache');
