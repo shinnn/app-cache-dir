@@ -10,11 +10,14 @@ Get a path of the standard cache directory for a given application
 ```javascript
 const appCacheDir = require('app-cache-dir');
 
+// On most Linuxes
+appCacheDir('my-app'); //=> '/root/shinnn/.cache/my-app'
+
 // On macOS
-appCacheDir('my-app') //=> '/Users/shinnn/.cache/my-app'
+appCacheDir('my-app'); //=> '/Users/shinnn/.cache/my-app'
 
 // On Windows
-appCacheDir('my-app') //=> 'C:\\Users\\shinnn\\AppData\\Local\\my-app\\cache'
+appCacheDir('my-app'); //=> 'C:\\Users\\shinnn\\AppData\\Local\\my-app\\cache'
 ```
 
 ## Installation
