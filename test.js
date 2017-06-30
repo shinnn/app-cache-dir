@@ -13,7 +13,7 @@ delete process.env.XDG_CACHE_HOME;
 test('appCacheDir()', t => {
   t.throws(
     () => appCacheDir(1),
-    /^TypeError.*Expected an application name to find its cache directory \(string\), but got 1\./,
+    /^TypeError.*Expected an application name to find its cache directory \(string\), but got 1 \(number\)\./,
     'should throw an error when it takes a non-string argument.'
   );
 

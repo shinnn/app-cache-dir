@@ -24,6 +24,9 @@
     "deletable",
     "cross-platform"
   ],
+  "dependencies": {
+    "inspect-with-kind": "^1.0.2"
+  },
   "devDependencies": {
     "@shinnn/eslint-config-node": "^4.0.0",
     "eslint": "^4.1.1",

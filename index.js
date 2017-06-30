@@ -6,6 +6,8 @@ const os = require('os');
 const homedir = os.homedir;
 const tmpdir = os.tmpdir;
 
+const inspectWithKind = require('inspect-with-kind');
+
 const ARG_ERROR = 'Expected an application name to find its cache directory';
 
 function isLocalAppDataKey(key) {
@@ -14,7 +16,7 @@ function isLocalAppDataKey(key) {
 
 function validateArgument(appName) {
   if (typeof appName !== 'string') {
-    throw new TypeError(`${ARG_ERROR} (string), but got ${appName}.`);
+    throw new TypeError(`${ARG_ERROR} (string), but got ${inspectWithKind(appName)}.`);
   }
 
   if (appName.length === 0) {
