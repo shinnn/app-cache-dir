@@ -1,6 +1,6 @@
 {
   "name": "app-cache-dir",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Get a path of the standard cache directory for a given application",
   "repository": "shinnn/app-cache-dir",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
