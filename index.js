@@ -1,10 +1,7 @@
 'use strict';
 
-const join = require('path').join;
-const os = require('os');
-
-const homedir = os.homedir;
-const tmpdir = os.tmpdir;
+const {join} = require('path');
+const {homedir, tmpdir} = require('os');
 
 const inspectWithKind = require('inspect-with-kind');
 
@@ -37,7 +34,7 @@ function posixAppCacheDir(appName) {
 
   const home = homedir();
 
-  if (home && home.indexOf('\0') === -1) {
+  if (home && !home.includes('\0')) {
     return join(home, '.cache', appName);
   }
 
