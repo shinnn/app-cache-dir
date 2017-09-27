@@ -1,6 +1,6 @@
 # app-cache-dir
 
-[![NPM version](https://img.shields.io/npm/v/app-cache-dir.svg)](https://www.npmjs.com/package/app-cache-dir)
+[![npm version](https://img.shields.io/npm/v/app-cache-dir.svg)](https://www.npmjs.com/package/app-cache-dir)
 [![Build Status](https://travis-ci.org/shinnn/app-cache-dir.svg?branch=master)](https://travis-ci.org/shinnn/app-cache-dir)
 [![Build status](https://ci.appveyor.com/api/projects/status/t75b3ps73337xpra/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/app-cache-dir/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/app-cache-dir.svg)](https://coveralls.io/github/shinnn/app-cache-dir?branch=master)
@@ -74,4 +74,4 @@ Follow Windows way regardless of the current OS.
 
 ## License
 
-[Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed)
+[ISC License](./LICENSE) © 2017 Shinnosuke Watanabe
