@@ -1,6 +1,6 @@
 {
   "name": "app-cache-dir",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Get a path of the standard cache directory for a given application",
   "repository": "shinnn/app-cache-dir",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
@@ -28,11 +28,11 @@
     "inspect-with-kind": "^1.0.2"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node": "^4.0.0",
-    "eslint": "^4.1.1",
+    "@shinnn/eslint-config-node": "^4.0.2",
+    "eslint": "^4.8.0",
     "istanbul": "^0.4.5",
     "pretend-platform": "^2.0.0",
-    "tape": "^4.7.0"
+    "tape": "^4.8.0"
   },
   "eslintConfig": {
     "extends": "@shinnn/node"
