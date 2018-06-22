@@ -6,10 +6,7 @@ const {homedir, tmpdir} = require('os');
 const inspectWithKind = require('inspect-with-kind');
 
 const ARG_ERROR = 'Expected an application name to find its cache directory';
-
-function isLocalAppDataKey(key) {
-  return key.toUpperCase() === 'LOCALAPPDATA';
-}
+const LOCALAPPDATA = 'LOCALAPPDATA';
 
 function validateArgument(appName) {
   if (typeof appName !== 'string') {
@@ -44,10 +41,10 @@ function posixAppCacheDir(appName) {
 function win32AppCacheDir(appName) {
   validateArgument(appName);
 
-  const key = Object.keys(process.env).find(isLocalAppDataKey);
-
-  if (key) {
-    return join(process.env[key], appName, 'cache');
+  for (const key of Object.keys(process.env)) {
+    if (key.toUpperCase() === LOCALAPPDATA) {
+      return join(process.env[key], appName, 'cache');
+    }
   }
 
   return fallback(appName);
