@@ -23,6 +23,18 @@ test('appCacheDir()', t => {
     'should throw an error when it takes an empty string.'
   );
 
+  t.throws(
+    () => appCacheDir(),
+    /^RangeError.*Expected 1 argument \(<string>\), but got no arguments\./,
+    'should throw an error when it takes no arguments.'
+  );
+
+  t.throws(
+    () => appCacheDir('a', 'b'),
+    /^RangeError.*Expected 1 argument \(<string>\), but got 2 arguments\./,
+    'should throw an error when it takes too many arguments.'
+  );
+
   t.end();
 });
 
