@@ -9,61 +9,61 @@ const ARG_ERROR = 'Expected an application name to find its cache directory';
 const LOCALAPPDATA = 'LOCALAPPDATA';
 
 function validateArgument(...args) {
-  const argLen = args.length;
+	const argLen = args.length;
 
-  if (argLen !== 1) {
-    throw new RangeError(`Expected 1 argument (<string>), but got ${argLen || 'no'} arguments.`);
-  }
+	if (argLen !== 1) {
+		throw new RangeError(`Expected 1 argument (<string>), but got ${argLen || 'no'} arguments.`);
+	}
 
-  const [appName] = args;
+	const [appName] = args;
 
-  if (typeof appName !== 'string') {
-    throw new TypeError(`${ARG_ERROR} (string), but got ${inspectWithKind(appName)}.`);
-  }
+	if (typeof appName !== 'string') {
+		throw new TypeError(`${ARG_ERROR} (string), but got ${inspectWithKind(appName)}.`);
+	}
 
-  if (appName.length === 0) {
-    throw new Error(`${ARG_ERROR}, but got '' (empty string).`);
-  }
+	if (appName.length === 0) {
+		throw new Error(`${ARG_ERROR}, but got '' (empty string).`);
+	}
 }
 
 function fallback(appName) {
-  return join(tmpdir(), appName, 'cache');
+	return join(tmpdir(), appName, 'cache');
 }
 
 function posixAppCacheDir(...args) {
-  validateArgument(...args);
+	validateArgument(...args);
 
-  if (process.env.XDG_CACHE_HOME) {
-    return join(process.env.XDG_CACHE_HOME, ...args);
-  }
+	if (process.env.XDG_CACHE_HOME) {
+		return join(process.env.XDG_CACHE_HOME, ...args);
+	}
 
-  const home = homedir();
+	const home = homedir();
 
-  if (home && !home.includes('\0')) {
-    return join(home, '.cache', ...args);
-  }
+	if (home && !home.includes('\0')) {
+		return join(home, '.cache', ...args);
+	}
 
-  return fallback(...args);
+	return fallback(...args);
 }
 
 function win32AppCacheDir(...args) {
-  validateArgument(...args);
+	validateArgument(...args);
 
-  for (const key of Object.keys(process.env)) {
-    if (key.toUpperCase() === LOCALAPPDATA) {
-      return join(process.env[key], ...args, 'cache');
-    }
-  }
+	for (const key of Object.keys(process.env)) {
+		if (key.toUpperCase() === LOCALAPPDATA) {
+			return join(process.env[key], ...args, 'cache');
+		}
+	}
 
-  return fallback(...args);
+	return fallback(...args);
 }
 
 module.exports = function appCacheDir(...args) {
-  if (process.platform === 'win32') {
-    return win32AppCacheDir(...args);
-  }
+	if (process.platform === 'win32') {
+		return win32AppCacheDir(...args);
+	}
 
-  return posixAppCacheDir(...args);
+	return posixAppCacheDir(...args);
 };
 
 module.exports.posix = posixAppCacheDir;
