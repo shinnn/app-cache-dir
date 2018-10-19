@@ -5,24 +5,32 @@ const {homedir, tmpdir} = require('os');
 
 const inspectWithKind = require('inspect-with-kind');
 
+const ARG_LEN_ERROR = 'Expected 1 argument (<string>)';
 const ARG_ERROR = 'Expected an application name to find its cache directory';
 const LOCALAPPDATA = 'LOCALAPPDATA';
 
 function validateArgument(...args) {
 	const argLen = args.length;
-
-	if (argLen !== 1) {
-		throw new RangeError(`Expected 1 argument (<string>), but got ${argLen || 'no'} arguments.`);
-	}
-
 	const [appName] = args;
+	let error;
 
-	if (typeof appName !== 'string') {
-		throw new TypeError(`${ARG_ERROR} (string), but got ${inspectWithKind(appName)}.`);
+	if (argLen === 0) {
+		error = new RangeError(`${ARG_LEN_ERROR}, but got no arguments.`);
+		error.code = 'ERR_MISSING_ARGS';
+	} else if (argLen !== 1) {
+		error = new RangeError(`${ARG_LEN_ERROR}, but got ${argLen} arguments.`);
+		error.code = 'ERR_TOO_MANY_ARGS';
+	} else if (typeof appName !== 'string') {
+		error = new TypeError(`${ARG_ERROR} (string), but got ${inspectWithKind(appName)}.`);
+		error.code = 'ERR_INVALID_ARG_TYPE';
+	} else if (appName.length === 0) {
+		error = new Error(`${ARG_ERROR}, but got '' (empty string).`);
+		error.code = 'ERR_INVALID_ARG_VALUE';
 	}
 
-	if (appName.length === 0) {
-		throw new Error(`${ARG_ERROR}, but got '' (empty string).`);
+	if (error) {
+		Error.captureStackTrace(error, validateArgument);
+		throw error;
 	}
 }
 
