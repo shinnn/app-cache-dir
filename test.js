@@ -13,25 +13,25 @@ delete process.env.XDG_CACHE_HOME;
 test('appCacheDir()', t => {
 	t.throws(
 		() => appCacheDir(1),
-		/^TypeError.*Expected an application name to find its cache directory \(string\), but got 1 \(number\)\./,
+		/^TypeError.*Expected an application name to find its cache directory \(string\), but got 1 \(number\)\./u,
 		'should throw an error when it takes a non-string argument.'
 	);
 
 	t.throws(
 		() => appCacheDir(''),
-		/^Error.*Expected an application name to find its cache directory, but got '' \(empty string\)\./,
+		/^Error.*Expected an application name to find its cache directory, but got '' \(empty string\)\./u,
 		'should throw an error when it takes an empty string.'
 	);
 
 	t.throws(
 		() => appCacheDir(),
-		/^RangeError.*Expected 1 argument \(<string>\), but got no arguments\./,
+		/^RangeError.*Expected 1 argument \(<string>\), but got no arguments\./u,
 		'should throw an error when it takes no arguments.'
 	);
 
 	t.throws(
 		() => appCacheDir('a', 'b'),
-		/^RangeError.*Expected 1 argument \(<string>\), but got 2 arguments\./,
+		/^RangeError.*Expected 1 argument \(<string>\), but got 2 arguments\./u,
 		'should throw an error when it takes too many arguments.'
 	);
 

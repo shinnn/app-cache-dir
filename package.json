@@ -4,11 +4,11 @@
 	"description": "Get a path of the standard cache directory for a given application",
 	"repository": "shinnn/app-cache-dir",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
-	"scripts": {
-		"pretest": "eslint --fix --format=codeframe .",
-		"test": "nyc --reporter=html --reporter=text node test.js"
-	},
 	"license": "ISC",
+	"scripts": {
+		"pretest": "eslint .",
+		"test": "nyc node test.js"
+	},
 	"files": [
 		"index.js"
 	],
@@ -25,16 +25,20 @@
 		"cross-platform"
 	],
 	"dependencies": {
-		"inspect-with-kind": "^1.0.4"
+		"inspect-with-kind": "^1.0.5"
 	},
 	"devDependencies": {
-		"@shinnn/eslint-config-node": "^5.0.0",
-		"eslint": "^5.0.1",
-		"nyc": "^12.0.2",
+		"@shinnn/eslint-config": "^6.7.4",
+		"eslint": "^5.7.0",
+		"nyc": "^13.1.0",
+		"nyc-config-common": "^1.0.1",
 		"pretend-platform": "^2.0.0",
 		"tape": "^4.9.1"
 	},
 	"eslintConfig": {
-		"extends": "@shinnn/node"
+		"extends": "@shinnn"
+	},
+	"nyc": {
+		"extends": "nyc-config-common"
 	}
 }
