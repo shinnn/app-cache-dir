@@ -1,7 +1,7 @@
 # app-cache-dir
 
 [![npm version](https://img.shields.io/npm/v/app-cache-dir.svg)](https://www.npmjs.com/package/app-cache-dir)
-[![Build Status](https://travis-ci.org/shinnn/app-cache-dir.svg?branch=master)](https://travis-ci.org/shinnn/app-cache-dir)
+[![Build Status](https://travis-ci.com/shinnn/app-cache-dir.svg?branch=master)](https://travis-ci.com/shinnn/app-cache-dir)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/app-cache-dir.svg)](https://coveralls.io/github/shinnn/app-cache-dir?branch=master)
 
 Get a path of the standard cache directory for a given application
@@ -21,7 +21,7 @@ appCacheDir('my-app'); //=> 'C:\\Users\\shinnn\\AppData\\Local\\my-app\\cache'
 
 ## Installation
 
-[Use npm.](https://docs.npmjs.com/cli/install)
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/about-npm/).
 
 ```
 npm install app-cache-dir
