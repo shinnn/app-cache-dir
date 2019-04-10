@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/app-cache-dir.svg)](https://www.npmjs.com/package/app-cache-dir)
 [![Build Status](https://travis-ci.com/shinnn/app-cache-dir.svg?branch=master)](https://travis-ci.com/shinnn/app-cache-dir)
-[![Coverage Status](https://img.shields.io/coveralls/shinnn/app-cache-dir.svg)](https://coveralls.io/github/shinnn/app-cache-dir?branch=master)
+[![codecov](https://codecov.io/gh/shinnn/app-cache-dir/branch/master/graph/badge.svg)](https://codecov.io/gh/shinnn/app-cache-dir)
 
 Get a path of the standard cache directory for a given application
 
@@ -73,4 +73,4 @@ Follow Windows way regardless of the current OS.
 
 ## License
 
-[ISC License](./LICENSE) © 2017 - 2018 Shinnosuke Watanabe
+[ISC License](./LICENSE) © 2017 - 2019 Shinnosuke Watanabe
